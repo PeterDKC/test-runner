@@ -1,0 +1,29 @@
+{
+    "name": "peterdkc/test-runner",
+    "type": "package",
+    "description": "A consistent set of commands for running tests in your project.",
+    "keywords": ["testing", "utility"],
+    "license": "MIT",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "mockery/mockery": "^1.5",
+        "symfony/dependency-injection": "^6.0"
+    },
+    "autoload": {
+    	"psr-4": {
+    		"PeterDKC\\": "src/"
+    	}
+    },
+    "scripts": {
+        "coverage-text": "PeterDKC\\TestRunner::coverageText",
+        "coverage-clover": "PeterDKC\\TestRunner::coverageClover",
+        "coverage-full": "PeterDKC\\TestRunner::coverageFull",
+        "test": "PeterDKC\\TestRunner::test",
+        "filter": "PeterDKC\\TestRunner::filterTests",
+        "repeat": "PeterDKC\\TestRunner::repeatTest",
+        "filter-coverage": "PeterDKC\\TestRunner::filterCoverage"
+    },
+    "require": {
+        "php-di/php-di": "^5.4"
+    }
+}
