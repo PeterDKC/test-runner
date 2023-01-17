@@ -40,6 +40,27 @@ class TestRunner
         ]);
     }
 
+    public static function filterCoverage(Event $event): void
+    {
+        $filter = static::extract($event, 0, 'You must supply a string to filter tests on');
+
+        static::run([
+            "vendor/bin/phpunit",
+            "-dmemory_limit=-1",
+            "--colors=always",
+            "-dpcov.directory=./",
+            "--filter",
+            $filter,
+            "--coverage-html",
+            "coverage",
+        ]);
+
+        static::run([
+            "open",
+            "coverage/index.html",
+        ]);
+    }
+
     public static function coverageText(Event $event): void
     {
         static::run([
