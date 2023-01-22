@@ -51,5 +51,5 @@ compsoer repeat 30 aTestFilterToRunThirtyTimes
 ```
 
 ```bash
-compsoer filter-coverage aTestFilterToRunThirtyTimes
+compsoer filter-coverage aTestNameOrClassToFilterTo
 ```
