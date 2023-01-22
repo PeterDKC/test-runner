@@ -49,3 +49,17 @@ composer filter aTestNameOrClassToFilterTo
 ```bash
 compsoer repeat 30 aTestFilterToRunThirtyTimes
 ```
+
+## Testing the package
+
+Everything has to be done manually, since the runners cannot execute themselves.
+
+```bash
+vendor/bin/phpunit tests
+```
+
+- `tests` contains the actual tests of the `src/` directory
+- `sample-tests` are a set of bogus tests that the commands are run against to generate output
+- Coverage cannot be generated since phpunit is not executing the contents of `src/` directly
+
+Ironic.

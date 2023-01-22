@@ -11,7 +11,9 @@
     },
     "autoload": {
     	"psr-4": {
-    		"PeterDKC\\": "src/"
+    		"PeterDKC\\": "src/",
+            "Tests\\": "tests/",
+            "SampleTests\\": "sample-tests/"
     	}
     },
     "scripts": {

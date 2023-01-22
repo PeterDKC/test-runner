@@ -10,7 +10,19 @@ use Symfony\Component\Process\Process;
 
 class TestRunner
 {
-    protected static $defaultDescription = 'Filter tests to the given string. Usage: composer tf somethingToFilterOn';
+    protected static $defaultDescription = 'Test Runners provides a consistent set of composer ' .
+        'commands to run, filter, and view coverage on your project\'s PHPUnit test suite.';
+
+    public static function coverageText(Event $event): void
+    {
+        static::run([
+            "vendor/bin/phpunit",
+            "-dmemory_limit=-1",
+            "-dpcov.directory=./",
+            "--coverage-text",
+            "--colors=never",
+        ], $event);
+    }
 
     public static function coverageClover(Event $event): void
     {
@@ -20,7 +32,7 @@ class TestRunner
             "--colors=always",
             "-dpcov.directory=./",
             "--coverage-clover=coverage.xml",
-        ]);
+        ], $event);
     }
 
     public static function coverageFull(Event $event): void
@@ -32,12 +44,12 @@ class TestRunner
             "-dpcov.directory=./",
             "--coverage-html",
             "coverage",
-        ]);
+        ], $event);
 
         static::run([
             "open",
             "coverage/index.html",
-        ]);
+        ], $event);
     }
 
     public static function filterCoverage(Event $event): void
@@ -53,23 +65,12 @@ class TestRunner
             $filter,
             "--coverage-html",
             "coverage",
-        ]);
+        ], $event);
 
         static::run([
             "open",
             "coverage/index.html",
-        ]);
-    }
-
-    public static function coverageText(Event $event): void
-    {
-        static::run([
-            "vendor/bin/phpunit",
-            "-dmemory_limit=-1",
-            "-dpcov.directory=./",
-            "--coverage-text",
-            "--colors=never",
-        ]);
+        ], $event);
     }
 
     public static function test(Event $event): void
@@ -78,7 +79,7 @@ class TestRunner
             "vendor/bin/phpunit",
             "--colors=always",
             "-dmemory_limit=-1",
-        ]);
+        ], $event);
     }
 
     public static function filterTests(Event $event): void
@@ -90,7 +91,7 @@ class TestRunner
             "--colors=always",
             "--filter",
             $filter,
-        ]);
+        ], $event);
     }
 
     public static function repeatTest(Event $event): void
@@ -113,7 +114,7 @@ class TestRunner
             $times,
             "--filter",
             $filter,
-        ]);
+        ], $event);
     }
 
     protected static function extract(Event $event, int $index, string $description): mixed
@@ -127,8 +128,12 @@ class TestRunner
         return $argument;
     }
 
-    protected static function run(array $arguments): void
+    protected static function run(array $arguments, Event $event): void
     {
+        if (array_search('testdox', $event->getArguments()) !== false) {
+            $arguments[] = '--testdox';
+        }
+
         $process = new Process($arguments);
 
         $process->run(function ($type, $buffer) {
