@@ -40,7 +40,7 @@ or
 composer coverage-full
 ```
 
-However, `filter` and `repeat` require arguments
+However, `filter`, `repeat` and `filter-coverage` require arguments
 
 ```bash
 composer filter aTestNameOrClassToFilterTo
@@ -48,6 +48,10 @@ composer filter aTestNameOrClassToFilterTo
 
 ```bash
 compsoer repeat 30 aTestFilterToRunThirtyTimes
+```
+
+```bash
+compsoer filter-coverage aTestNameOrClassToFilterTo
 ```
 
 ## Testing the package
