@@ -122,7 +122,7 @@ class TestRunner
         $argument = $event->getArguments()[0] ?? null;
 
         if (is_null($argument)) {
-            throw new Exception('You must supply a string to filter tests on');
+            throw new Exception($description);
         }
 
         return $argument;

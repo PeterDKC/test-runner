@@ -104,7 +104,7 @@ class TestRunnerTest extends TestCase
         );
 
         $this->assertStringContainsString(
-            '<metrics loc="143" ncloc="143" classes="1" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="77" coveredstatements="0" elements="86" coveredelements="0"/>',
+            '<line num="27" type="method" name="coverageClover" visibility="public" complexity="1" crap="2" count="0"/>',
             $output
         );
     }
