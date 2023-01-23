@@ -7,7 +7,7 @@ Test Runners provides a consistent set of composer commands to run, filter, and 
 Install the package via `composer`:
 
 ```bash
-composer require peterdkc/test-runners
+composer require --dev peterdkc/test-runners
 ```
 
 Add the following as desired to your project's `composer.json` file in the `scripts` section:
