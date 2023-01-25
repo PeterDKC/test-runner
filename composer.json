@@ -24,8 +24,5 @@
         "filter": "PeterDKC\\TestRunner::filterTests",
         "repeat": "PeterDKC\\TestRunner::repeatTest",
         "filter-coverage": "PeterDKC\\TestRunner::filterCoverage"
-    },
-    "require": {
-        "php-di/php-di": "^5.4"
     }
 }
