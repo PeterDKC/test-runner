@@ -15,12 +15,33 @@
     	}
     },
     "scripts": {
-        "coverage-text": "PeterDKC\\TestRunner::coverageText",
-        "coverage-clover": "PeterDKC\\TestRunner::coverageClover",
-        "coverage-full": "PeterDKC\\TestRunner::coverageFull",
-        "test": "PeterDKC\\TestRunner::test",
-        "filter": "PeterDKC\\TestRunner::filterTests",
-        "repeat": "PeterDKC\\TestRunner::repeatTest",
-        "filter-coverage": "PeterDKC\\TestRunner::filterCoverage"
+        "coverage-text": [
+            "Composer\\Config::disableProcessTimeout",
+            "PeterDKC\\TestRunner::coverageText"
+        ],
+        "coverage-clover": [
+            "Composer\\Config::disableProcessTimeout",
+            "PeterDKC\\TestRunner::coverageClover"
+        ],
+        "coverage-full": [
+            "Composer\\Config::disableProcessTimeout",
+            "PeterDKC\\TestRunner::coverageFull"
+        ],
+        "test": [
+            "Composer\\Config::disableProcessTimeout",
+            "PeterDKC\\TestRunner::test"
+        ],
+        "filter": [
+            "Composer\\Config::disableProcessTimeout",
+            "PeterDKC\\TestRunner::filterTests"
+        ],
+        "repeat": [
+            "Composer\\Config::disableProcessTimeout",
+            "PeterDKC\\TestRunner::repeatTest"
+        ],
+        "filter-coverage": [
+            "Composer\\Config::disableProcessTimeout",
+            "PeterDKC\\TestRunner::filterCoverage"
+        ]
     }
 }
